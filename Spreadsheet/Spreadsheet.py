@@ -66,7 +66,8 @@ class Spreadsheet:
     def swap_columns(self, column1: int, column2: int):
         if isinstance(column1, int) and 0 <= column1 < self.column and isinstance(column1, int) \
                 and 0 <= column2 < self.column:
-            self.spreadsheet[column1], self.spreadsheet[column2] = self.spreadsheet[column2], self.spreadsheet[column1]
+            for row in self.spreadsheet:
+                row[column1], row[column2] = row[column2], row[column1]
         else:
             raise ValueError
 
